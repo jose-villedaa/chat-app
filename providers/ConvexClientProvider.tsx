@@ -4,7 +4,7 @@ import React from 'react';
 import { ClerkProvider, useAuth } from '@clerk/nextjs';
 import { Authenticated, AuthLoading, ConvexReactClient } from 'convex/react';
 import { ConvexProviderWithClerk } from 'convex/react-clerk';
-import LoadingLogo from '@components/shared/LoadingLogo';
+import { LoadingLogo } from '@/components';
 import { CONVEX_URL } from 'settings';
 
 type ClientProviderProps = {
