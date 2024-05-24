@@ -2,6 +2,7 @@
 
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
+import { ThemeToggle } from '@/components/ui/ThemeToggle';
 import {
   Tooltip,
   TooltipContent,
@@ -41,6 +42,9 @@ function MobileNav() {
             </li>
           ))}
           <li>
+            <ThemeToggle />
+          </li>
+          <li className="mt-1.5">
             <UserButton />
           </li>
         </ul>
