@@ -13,11 +13,10 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog';
-import { Tooltip, TooltipTrigger } from '@/components/ui/tooltip';
+import { Tooltip, TooltipTrigger, TooltipContent } from '@/components/ui/tooltip';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { UserPlus } from 'lucide-react';
-import { TooltipContent } from '@radix-ui/react-tooltip';
 import {
   Form,
   FormControl,
@@ -28,14 +27,10 @@ import {
 } from '@/components/ui/form';
 import { toast } from 'sonner';
 import { ConvexError } from 'convex/values';
-import { FunctionReference } from 'convex/server';
+import { api } from '@convex/_generated/api';
 
-type Props = {
-  mutationToRun: FunctionReference<'mutation'>;
-};
-
-function FriendDialog({ mutationToRun }: Props) {
-  const { mutate: createRequest, pending } = useMutationState(mutationToRun);
+function FriendDialog() {
+  const { mutate: createRequest, pending } = useMutationState(api.request.create);
 
   const requestForm = useForm<AddFriendFormSchema>({
     resolver: AddFriendFormResolver,
@@ -77,7 +72,7 @@ function FriendDialog({ mutationToRun }: Props) {
           </DialogDescription>
         </DialogHeader>
         <Form {...requestForm}>
-          <form onSubmit={requestForm.handleSubmit(handleSubmit)} className="">
+          <form onSubmit={requestForm.handleSubmit(handleSubmit)} className="space-y-8">
             <FormField
               control={requestForm.control}
               name="email"

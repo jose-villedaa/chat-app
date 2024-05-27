@@ -5,3 +5,4 @@ export { default as ConversationFallback } from './shared/Conversation/Conversat
 export { default as ConversationContainer } from './shared/Conversation/ConversationContainer';
 export { ThemeProvider } from './ui/ThemeProvider';
 export { ThemeToggle } from './ui/ThemeToggle';
+export { default as Spinner } from './shared/Spinner';
