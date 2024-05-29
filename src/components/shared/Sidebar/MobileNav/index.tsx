@@ -1,8 +1,10 @@
 'use client';
 
+import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { ThemeToggle } from '@/components/ui/ThemeToggle';
+import { Badge } from '@components/ui/badge';
 import {
   Tooltip,
   TooltipContent,
@@ -11,7 +13,6 @@ import {
 import { useConversation, useNavigation } from '@/hooks';
 import { UserButton } from '@clerk/nextjs';
 import Link from 'next/link';
-import React from 'react';
 
 function MobileNav() {
   const paths = useNavigation();
@@ -23,7 +24,7 @@ function MobileNav() {
       <nav className="w-full">
         <ul className="flex justify-evenly items-center">
           {paths.map((path) => (
-            <li key={path.name}>
+            <li key={path.name} className="relative">
               <Link href={path.href}>
                 <Tooltip>
                   <TooltipTrigger>
@@ -33,6 +34,11 @@ function MobileNav() {
                     >
                       {path.icon}
                     </Button>
+                    {path.count && path.count > 0 && (
+                      <Badge className="absolute left-7 bottom-6">
+                        {path.count}
+                      </Badge>
+                    )}
                   </TooltipTrigger>
                   <TooltipContent>
                     <p>{path.name}</p>
@@ -44,7 +50,7 @@ function MobileNav() {
           <li>
             <ThemeToggle />
           </li>
-          <li className="mt-1.5">
+          <li>
             <UserButton />
           </li>
         </ul>

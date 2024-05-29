@@ -1,14 +1,13 @@
-/* eslint-disable */
-import { ConvexError } from "convex/values";
-import { query } from "./_generated/server";
-import getUserByClerkId from "./_utils";
+import { ConvexError } from 'convex/values';
+import { query } from './_generated/server';
+import getUserByClerkId from './_utils';
 
 export const get = query({
   handler: async (ctx) => {
     const identity = await ctx.auth.getUserIdentity();
 
     if (!identity) {
-      throw new ConvexError("Unauthorized");
+      throw new ConvexError('Unauthorized');
     }
 
     const currentUser = await getUserByClerkId({
@@ -17,12 +16,12 @@ export const get = query({
     });
 
     if (!currentUser) {
-      throw new ConvexError("User not found");
+      throw new ConvexError('User not found');
     }
 
     const requests = await ctx.db
-      .query("requests")
-      .withIndex("by_receiver", (q) => q.eq("receiver", currentUser._id))
+      .query('requests')
+      .withIndex('by_receiver', (q) => q.eq('receiver', currentUser._id))
       .collect();
 
     const requestWithSender = await Promise.all(
@@ -30,15 +29,42 @@ export const get = query({
         const sender = await ctx.db.get(request.sender);
 
         if (!sender) {
-          throw new ConvexError("Request Sender not found");
+          throw new ConvexError('Request Sender not found');
         }
 
         return {
           request,
           sender,
         };
-      })
+      }),
     );
+
     return requestWithSender;
+  },
+});
+
+export const count = query({
+  handler: async (ctx) => {
+    const identity = await ctx.auth.getUserIdentity();
+
+    if (!identity) {
+      throw new ConvexError('Unauthorized');
+    }
+
+    const currentUser = await getUserByClerkId({
+      ctx,
+      clerkId: identity.subject,
+    });
+
+    if (!currentUser) {
+      throw new ConvexError('User not found');
+    }
+
+    const requests = await ctx.db
+      .query('requests')
+      .withIndex('by_receiver', (q) => q.eq('receiver', currentUser._id))
+      .collect();
+
+    return requests.length;
   },
 });
