@@ -6,3 +6,4 @@ export { default as ConversationContainer } from './shared/Conversation/Conversa
 export { ThemeProvider } from './ui/ThemeProvider';
 export { ThemeToggle } from './ui/ThemeToggle';
 export { default as Spinner } from './shared/Spinner';
+export { default as DmConversation } from './shared/DmConversation';
