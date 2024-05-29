@@ -30,6 +30,7 @@ function FriendsPage() {
     return friendRequests.map(({ request, sender }) => (
       <Request
         key={request._id}
+        id={request._id}
         email={sender.email}
         imageUrl={sender.imageUrl}
         username={sender.username}

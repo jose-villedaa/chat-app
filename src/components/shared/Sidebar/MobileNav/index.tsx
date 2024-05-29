@@ -5,11 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { ThemeToggle } from '@/components/ui/ThemeToggle';
 import { Badge } from '@components/ui/badge';
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from '@/components/ui/tooltip';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { useConversation, useNavigation } from '@/hooks';
 import { UserButton } from '@clerk/nextjs';
 import Link from 'next/link';
@@ -28,16 +24,11 @@ function MobileNav() {
               <Link href={path.href}>
                 <Tooltip>
                   <TooltipTrigger>
-                    <Button
-                      size="icon"
-                      variant={path.active ? 'default' : 'outline'}
-                    >
+                    <Button size="icon" variant={path.active ? 'default' : 'outline'}>
                       {path.icon}
                     </Button>
-                    {path.count && path.count > 0 && (
-                      <Badge className="absolute left-7 bottom-6">
-                        {path.count}
-                      </Badge>
+                    {path.count !== undefined && path.count > 0 && (
+                      <Badge className="absolute left-7 bottom-6">{path.count}</Badge>
                     )}
                   </TooltipTrigger>
                   <TooltipContent>
