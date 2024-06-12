@@ -7,3 +7,6 @@ export { ThemeProvider } from './ui/ThemeProvider';
 export { ThemeToggle } from './ui/ThemeToggle';
 export { default as Spinner } from './shared/Spinner';
 export { default as DmConversation } from './shared/DmConversation';
+export { default as Body } from './shared/Conversation/Body';
+export { default as Header } from './shared/Conversation/Header';
+export { default as Input } from './shared/Conversation/Input';
