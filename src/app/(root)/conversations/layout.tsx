@@ -1,6 +1,7 @@
 'use client';
 
 import { DmConversation, ItemList, Spinner } from '@/components';
+import AddGroupDialog from '@/components/shared/Dialogs/AddGroup';
 import { api } from '@convex/_generated/api';
 import { useQuery } from 'convex/react';
 import { MessageSquareX } from 'lucide-react';
@@ -47,7 +48,9 @@ function ConversationsLayout({ children }: Props) {
 
   return (
     <>
-      <ItemList title="Conversations">{renderConversations()}</ItemList>
+      <ItemList title="Conversations" action={<AddGroupDialog />}>
+        {renderConversations()}
+      </ItemList>
       {children}
     </>
   );

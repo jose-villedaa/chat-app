@@ -14,3 +14,11 @@ const chatMessageSchema = z.object({
 
 export const ChatMessageResolver = zodResolver(chatMessageSchema);
 export type ChatMessageSchema = z.infer<typeof chatMessageSchema>;
+
+const createGroupFormSchema = z.object({
+  name: z.string().min(1, { message: 'This field cannot be empty' }),
+  members: z.array(z.string().min(1, { message: 'This must select at least 1 friend' })),
+});
+
+export const CreateGroupFormResolver = zodResolver(createGroupFormSchema);
+export type CreateGroupFormSchema = z.infer<typeof createGroupFormSchema>;
