@@ -10,3 +10,4 @@ export { default as DmConversation } from './shared/DmConversation';
 export { default as Body } from './shared/Conversation/Body';
 export { default as Header } from './shared/Conversation/Header';
 export { default as Input } from './shared/Conversation/Input';
+export { default as Message } from './shared/Conversation/Message';

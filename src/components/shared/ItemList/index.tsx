@@ -22,7 +22,7 @@ function ItemList({ children, title, action }: Props) {
       })}
     >
       <div className="mb-4 flex items-center justify-between">
-        <h1 className="text-2xl font-semibold tracking-tight">{title}</h1>
+        <h1 className="text-2xl font-semibold tracking-tight ml-2">{title}</h1>
         {action || null}
       </div>
       <div className="w-full h-full flex flex-col items-center justify-start gap-2">

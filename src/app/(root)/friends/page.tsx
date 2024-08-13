@@ -6,12 +6,11 @@ import FriendDialog from '@/components/shared/AddFriendDialog';
 import { useQuery } from 'convex/react';
 import { api } from '@convex/_generated/api';
 import Request from '@/components/shared/Request';
+import { HeartCrack } from 'lucide-react';
 
 function FriendsPage() {
   const friendRequests = useQuery(api.requests.get);
 
-  // TODO: Find a way to improve the conditional rendering
-  // TODO: Add translations for the entire project
   const renderFriendRequests = () => {
     if (!friendRequests) {
       return (
@@ -21,9 +20,12 @@ function FriendsPage() {
 
     if (friendRequests.length === 0) {
       return (
-        <p className="w-full h-full flex items-center justify-center">
-          You have no friend requests
-        </p>
+        <div className="w-full h-full flex flex-col items-center justify-center text-gray-400 p-4 sm:p-6 md:p-8">
+          <HeartCrack className="w-12 h-12 mb-4 sm:w-16 sm:h-16 md:w-20 md:h-20" />
+          <p className="text-base sm:text-lg md:text-xl font-semibold text-center">
+            You have no friend requests
+          </p>
+        </div>
       );
     }
 

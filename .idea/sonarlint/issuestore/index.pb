@@ -16,8 +16,6 @@ f
 6src/components/shared/Sidebar/SidebarWrapper/index.tsx,4\3\430a47732181a13f9a5bec6a9f4c4ad120d9d80f
 a
 1src/components/shared/Sidebar/MobileNav/index.tsx,c\b\cb5a6708c974c0ba701b2debd30ce2f840ceeb68
-?
-prettierrc.json,3\c\3cae5e91040f6fd234e4325d61401f900e864ddd
 S
 #.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
 Å
